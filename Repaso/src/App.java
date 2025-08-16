@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class App {
@@ -26,6 +27,9 @@ public class App {
         System.out.printf("El promedio de las calificaciones es: " + promedio);
 */
 
+
+/* 
+
         // ArrayList - Lista dinamica de nombres
 
         // Creamos un ArrayList para almacenar nombres
@@ -47,7 +51,55 @@ public class App {
         for (String nombre : nombres) {
             System.out.println("El nombre ingresado fue: " + nombre);
         }
+            */
 
+
+
+        //Ejercicio LinkendList -Lista enlazada simple de tareas
+
+        //Creamos una LinkedList para las tareas 
+
+        LinkedList<String> tareas = new LinkedList<>();
+        Scanner recibir = new Scanner(System.in);
+        int opcion;
+
+        //Menu principal
+        do {
+            System.out.println("1.Agregar tarea \n2.Eliminar primera tarea \n3.Mostrar tareas \n4.Salir");
+            System.out.println("Elige una opcion: ");
+            opcion = recibir.nextInt(); //Leemos la opción del usuario
+            recibir.nextLine(); // Limpiamos el buffer 
+
+            switch (opcion) {
+                case 1:
+                //Agregar nueva tarea
+                    System.out.print("Escribe la tarea: ");
+                    String tarea = recibir.nextLine(); // Leemos la tarea
+                    tareas.add(tarea); // Agregamos la tarea a la lista
+                    break;
+                case 2:
+                // Eliminamos la primera tarea
+                    if (!tareas.isEmpty()) {
+                        System.out.println("Tarea eliminada: " +  tareas.removeFirst()); // Eliminamos la primera tarea y la mostramos
+                    } else {
+                        System.out.println("No hay tareas para eliminar.");
+                    }
+                    break;
+                case 3:
+                // Mostramos todas las tareas
+                    System.out.println("Lista de tareas:");
+                    for (String t : tareas) {
+                        System.out.println("- " + t); 
+                    }
+                    break;
+                case 4:
+                    System.out.println("Saliendo del programa.");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intente de nuevo.");
+            }
+            
+        } while (opcion != 4); // Repetimos hasta que el usuario elija salir
     }
 
 }
